@@ -22,13 +22,6 @@ def load_cfg(fw_dir, args):
     with open(fw_dir+"/config/selection/tree_structure.yml", "r", encoding="utf-8") as f:
         cfg["structure"] = yaml.safe_load(f)["tree"]
 
-    try:
-        with open(fw_dir+"/config/workingPoints/BTag.json", "r", encoding="utf-8") as f:
-            cfg["btag"] = json.load(f)
-    except FileNotFoundError:
-        cfg["btag"] = {}
-        print("BTag working points file not found, proceeding without btag config.")
-
     with open(fw_dir+"/config/selection/weights.yml", "r", encoding="utf-8") as f:
         cfg["weights"] = yaml.safe_load(f)["Weights"]
 
